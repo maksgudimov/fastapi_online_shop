@@ -1,7 +1,7 @@
 import environ
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-
+from sqlalchemy.orm import sessionmaker, Session
 
 Base = declarative_base()
 
@@ -21,3 +21,5 @@ engine = create_engine(f"postgresql+psycopg2://"
 
 
 engine.connect()
+
+session = Session(autoflush=True, bind=engine)

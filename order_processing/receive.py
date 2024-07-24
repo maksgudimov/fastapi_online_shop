@@ -2,6 +2,7 @@ import json
 from services import send_notification
 from rbmq import connect_rabbit
 
+
 connection, channel = connect_rabbit()
 
 
@@ -24,5 +25,6 @@ def notify_customers_callback(ch, method, properties, body):
 
 channel.basic_consume('new_orders', process_new_orders_callback)
 channel.basic_consume('process_orders', notify_customers_callback)
+
 
 channel.start_consuming()

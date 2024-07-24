@@ -21,7 +21,7 @@ class Order(Base):
     unique_id = Column(UUID, unique=True, default=uuid.uuid4, nullable=False)
     user_id = Column(Integer, ForeignKey('users.id'))
     shop_id = Column(Integer, ForeignKey('shops.id'))
-    product = relationship("Product",secondary=order_product, backref="orders")
+    product = relationship("Product", secondary=order_product, backref="orders")
     payed = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.now())
     modified_at = Column(DateTime, default=datetime.now())
