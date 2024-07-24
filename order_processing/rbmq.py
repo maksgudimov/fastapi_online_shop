@@ -23,7 +23,7 @@ def connect_rabbit():
         'notify_customers'
     ]
 
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq')) #localhost
     channel = connection.channel()
 
     [channel.queue_declare(queue=queue_name) for queue_name in queue_names]
